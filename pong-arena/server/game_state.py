@@ -11,28 +11,21 @@ class GameState:
         self.ball_vx = 5
         self.ball_vy = 4
 
-    def update(self):
+        self.paddles = {
 
-        self.ball_x += self.ball_vx
-        self.ball_y += self.ball_vy
+            "TOP": 350,
+            "BOTTOM": 350,
 
-        if self.ball_x <= 0 or self.ball_x >= self.width:
-            self.ball_vx *= -1
+            "LEFT": 350,
+            "RIGHT": 350
+        }
 
-        if self.ball_y <= 0 or self.ball_y >= self.height:
-            self.ball_vy *= -1
+        self.scores = {
 
-    def update(self):
+            "TOP": 3,
+            "RIGHT": 3,
+            "BOTTOM": 3,
+            "LEFT": 3
+        }
 
-        self.ball_x += self.ball_vx
-        self.ball_y += self.ball_vy
-
-        # Rebote simple temporal
-
-        if self.ball_x <= 0 or self.ball_x >= self.width:
-
-            self.ball_vx *= -1
-
-        if self.ball_y <= 0 or self.ball_y >= self.height:
-
-            self.ball_vy *= -1
+        self.started = False

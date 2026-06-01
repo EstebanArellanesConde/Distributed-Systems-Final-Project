@@ -37,8 +37,13 @@ async def broadcast_room_status(room):
     data = {
         "type": "room_status",
         "players": len(room.players),
-        "positions": [
-            player.position
+        "players": [
+            {
+                "name": player.name,
+                "position": player.position,
+                "ready": player.ready
+            }
+
             for player in room.players
         ],
         "max_players": room.max_players
@@ -61,6 +66,14 @@ async def broadcast_room_status(room):
         if player in room.players:
 
             room.players.remove(player)
+
+async def handle_message(player, room, message):
+
+    if message["type"] == "ready":
+
+        player.ready = True
+
+        await broadcast_room_status(room)
 
 async def broadcast_game_state(room):
 
@@ -122,9 +135,19 @@ async def host_room(websocket: WebSocket):
 
     try:
 
+        import json
+
         while True:
 
-            await websocket.receive_text()
+            raw = await websocket.receive_text()
+
+            message = json.loads(raw)
+
+            await handle_message(
+                player,
+                room,
+                message
+            )
 
     except WebSocketDisconnect:
 
@@ -186,10 +209,20 @@ async def join_room(
 
     try:
 
+        import json
+
         while True:
 
-            await websocket.receive_text()
+            raw = await websocket.receive_text()
 
+            message = json.loads(raw)
+
+            await handle_message(
+                player,
+                room,
+                message
+            )
+            
     except WebSocketDisconnect:
 
         if player in room.players:

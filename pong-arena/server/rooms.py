@@ -1,5 +1,6 @@
 import random
 import string
+import uuid
 
 from game_state import GameState
 
@@ -23,13 +24,15 @@ class Player:
 
     def __init__(self, websocket, position):
 
+        self.id = str(uuid.uuid4())
+
         self.websocket = websocket
 
         self.position = position
 
         self.ready = False
 
-        self.name = "Anonymous"
+        self.name = position
 
 class Room:
 

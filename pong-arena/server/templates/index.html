@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
     <title>Pong Arena</title>
@@ -7,21 +8,76 @@
     <style>
 
         body {
-
-            background: #111;
+            background: #111827;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
             margin: 0;
+            padding-top: 30px;
+        }
 
-            display: flex;
+        h1 {
+            color: #00e5ff;
+        }
 
-            justify-content: center;
-            align-items: center;
+        button {
 
-            height: 100vh;
+            padding: 12px 20px;
+            margin: 8px;
+
+            border: none;
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+        }
+
+        #menu button {
+            background: #00e5ff;
+            color: black;
+        }
+
+        #readyButton {
+            background: #22c55e;
+            color: white;
+        }
+
+        input {
+
+            padding: 10px;
+
+            border-radius: 8px;
+            border: none;
+
+            margin: 5px;
+        }
+
+        #lobby {
+            display: none;
+        }
+
+        #playerList {
+            list-style: none;
+            padding: 0;
+        }
+
+        #playerList li {
+
+            margin: 10px;
+
+            font-size: 18px;
         }
 
         canvas {
 
-            border: 2px solid white;
+            display: none;
+
+            margin-top: 20px;
+
+            border: 2px solid #00e5ff;
+
+            background: #0f172a;
         }
 
     </style>
@@ -29,6 +85,40 @@
 </head>
 
 <body>
+
+<h1>Pong Arena</h1>
+
+<div id="menu">
+
+    <button onclick="createRoom()">
+        Crear Sala
+    </button>
+
+    <br>
+
+    <input
+        id="roomCode"
+        placeholder="Código de sala">
+
+    <button onclick="joinRoom()">
+        Unirse
+    </button>
+
+</div>
+
+<div id="lobby">
+
+    <h2 id="roomTitle"></h2>
+
+    <h3>Jugadores</h3>
+
+    <ul id="playerList"></ul>
+
+    <button id="readyButton">
+        READY
+    </button>
+
+</div>
 
 <canvas
     id="gameCanvas"
