@@ -74,7 +74,7 @@ Por ejemplo: http://localhost:8000
 ```bash
 python -m venv venv
 pip install fastapi uvicorn jinja2 websockets
-uvicorn app:app --host 0.0.0.0 --port 5000 --reload
+uvicorn app:app --reload
 ```
 
 # Estructura del Repositorio
