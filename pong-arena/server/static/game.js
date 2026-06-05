@@ -65,7 +65,7 @@ function draw() {
     // 2. Guardamos el estado original del sistema de coordenadas (Cámara limpia en X=0, Y=0)
     ctx.save();
 
-    // 3. --- LÓGICA DE VIEWPORT (CÁMARA DE PANTALLA DIVIDIDA) ---
+    // 3. LÓGICA DE VIEWPORT (CÁMARA DE PANTALLA DIVIDIDA) 
     // Si somos el cliente asignado a la mitad DERECHA de la cancha absoluta...
     if (myPosition === "RIGHT") {
         // ...Empujamos el universo de dibujo 400 píxeles a la izquierda.
@@ -117,7 +117,7 @@ function draw() {
 // Invocación inicial obligatoria para arrancar la máquina de estados de gráficos
 draw(); 
 
-// --- FLUJO DE MENÚS Y COMUNICACIÓN DE RED (WS) ---
+// FLUJO DE MENÚS Y COMUNICACIÓN DE RED (WS) 
 
 /**
  * DECLARACIÓN: Rutina asíncrona iniciada al presionar "Crear Sala". Hostea e inicia el socket.

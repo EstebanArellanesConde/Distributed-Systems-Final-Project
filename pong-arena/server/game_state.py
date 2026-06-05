@@ -122,7 +122,7 @@ class GameState:
         if self.inputs["RIGHT"]["ArrowUp"]: self.paddles["RIGHT"] = max(0, self.paddles["RIGHT"] - self.paddle_speed)
         if self.inputs["RIGHT"]["ArrowDown"]: self.paddles["RIGHT"] = min(self.height - self.paddle_length, self.paddles["RIGHT"] + self.paddle_speed)
 
-        # === BLOQUE DE FÍSICAS DE LA PELOTA ===
+        #  BLOQUE DE FÍSICAS DE LA PELOTA 
         if self.started:
             
             # Aplicamos los vectores de inercia a la posición espacial
@@ -143,7 +143,7 @@ class GameState:
                     self.ball_vx *= -1
                     self.last_touch = "RIGHT" # Registramos a este jugador como el último en tocar
 
-            # === ADAPTACIÓN DE ENTORNO: 2 JUGADORES ===
+            #  ADAPTACIÓN DE ENTORNO: 2 JUGADORES 
             if self.active_players == 2:
                 # Techo sólido: Rebota pero NO registra last_touch
                 if self.ball_y - self.ball_radius <= 0:
@@ -159,7 +159,7 @@ class GameState:
                 if self.ball_x < 0 or self.ball_x > self.width:
                     self.award_point()
 
-            # === ADAPTACIÓN DE ENTORNO: 4 JUGADORES ===
+            #  ADAPTACIÓN DE ENTORNO: 4 JUGADORES 
             elif self.active_players == 4:
                 # 3. Colisión orgánica con la paleta SUPERIOR
                 if self.ball_y - self.ball_radius <= 20:

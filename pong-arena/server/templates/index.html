@@ -84,7 +84,7 @@
         /* Clase de retroalimentación visual al oprimir el control físico */
         .key.active { background: #00e5ff; color: black; transform: scale(0.95); }
 
-        /* --- CONTENEDOR RESPONSIVO DEL JUEGO (ADAPTACIÓN MÓVIL EXTREMA) --- */
+        /* CONTENEDOR RESPONSIVO DEL JUEGO */
         #gameScreen.active {
             display: flex;
             flex-direction: column; /* Diseño vertical estricto (HUD arriba, Canvas abajo) */
@@ -145,7 +145,7 @@
             margin-top: 10px;
         }
 
-        /* EL LIENZO MATEMÁTICO: Blindado contra desbordamientos */
+        /* Blindado contra desbordamientos */
         canvas {
             max-width: 100%;        /* Nunca desbordará los lados de la pantalla */
             max-height: 65dvh;      /* Ocupa máximo el 65% del alto dinámico */
